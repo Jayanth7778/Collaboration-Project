@@ -2,8 +2,6 @@ package com.niit.model;
 
 import javax.persistence.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 @Table(name="user_Table")
 public class User
