@@ -20,14 +20,18 @@
         		<span class="icon-bar"></span>
       		</button>
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/">NIIT</a>
+                    <a class="navbar-brand" href="/">
+                    <img src="resources/images/collaboration-5.jpg" width="40" height="40"></a>
                 </div>
 			<div class="collapse navbar-collapse" id="collapse-example">
                 <ul class="nav navbar-nav ">
-                	<li><a href="">Welcome {{currentUser.username}}</a></li>
-                	<li><a href="logout()">logout</a></li>
-					<li><a href="#/register">Sign Up</a></li>
-					<li><a href="#/login">Sign In</a></li>
+                <!-- ng-show = true if currentUser.username is not undefined -->
+                <!-- if curentUser.username is null then ng-show=false-->
+                	<li><a href="" ng-show="currentUser.username">Welcome {{currentUser.username}}</a></li>
+                	<li><a href="#/editprofile">Edit User Profile</a></li>
+                	<li><a href="" ng-show="currentUser.username" ng-click="logout()">logout</a></li>
+					<li><a href="#/register" ng-hide="currentUser.username">Sign Up</a></li>
+					<li><a href="#/login" ng-hide="currentUser.username">Sign In</a></li>
 				</ul>
 			</div>
 			</div>

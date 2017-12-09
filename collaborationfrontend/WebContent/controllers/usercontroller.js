@@ -3,6 +3,21 @@
  */
 app.controller('UserController',function($scope,UserService,$location,$rootScope,$cookieStore){
 	
+	if($rootScope.currentUser!=undefined)
+		{
+			UserService.getUser().then(function(response){
+				$scope.user=response.data
+			},
+			function(response)
+			{
+				if(response.status==401)
+					{
+						$location.path('/login')				
+					}
+			})
+		}
+	
+	
 	$scope.registerUser=function() //2
 	{
 		console.log($scope.user)
@@ -27,10 +42,40 @@ app.controller('UserController',function($scope,UserService,$location,$rootScope
 		},
 		function(response)//401,500....
 		{
-			if(response.status==401){
+			if(response.status==401)
+			{
 				$scope.error=response.data//errorClazz in JSON fmt
 				$location.path('/login')
 			}
 		})
 	}
+	
+	$scope.editUserProfile=function(){
+		UserService.editUserProfile($scope.user).then(function(response){
+			alert('Updated Successfull')
+			$location.path('/home')
+			},
+			function(response)
+			{
+				if(response.status==401)
+					$location.path('/login')
+				if(response.status==500)
+					{
+						$scope.error=response.data
+						$location.path('/editprofile')
+					}
+		})
+	}
+	
+	
 })
+
+
+
+
+
+
+
+
+
+

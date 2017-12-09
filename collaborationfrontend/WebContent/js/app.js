@@ -12,9 +12,14 @@ app.config(function($routeProvider){
 		templateUrl:'views/login.html',
 		controller:'UserController'
 	})
+	.when('/editprofile',{
+		templateUrl:'views/userprofile.html',
+		controller:'UserController'
+	})
 	.otherwise({templateUrl:'views/home.html'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
+	alert($cookieStore.get('currentUser'))
 	if($rootScope.currentUser==undefined)
 		$rootScope.currentUser=$cookieStore.get('currentUser')
 		
@@ -29,7 +34,8 @@ app.run(function($rootScope,$cookieStore,UserService,$location){
 			$cookieStore.remove('currentUser')
 			$location.path('/login')
 			
-		},function(response)
+		},
+		function(response)
 		{
 			console.log(response.status)
 			$location.path('/login')

@@ -8,7 +8,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="username">Username</label>  
   <div class="col-md-4">
-  <input id="username" name="username" type="text" placeholder="Enter a Username" class="form-control input-md" required="" ng-model="user.username" disabled> 
+  <input id="username" name="username" type="text" placeholder="Enter a Username" class="form-control input-md" required="" ng-model="user.username"> 
   <span style="color:red" ng-if="error.code==2">{{error.message}}</span> 
   </div>
 </div>
@@ -68,7 +68,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
-    <button id="submit" name="EDIT" class="btn btn-primary" ng-click="registerUser()">SUBMIT</button>
+    <button id="submit" name="submit" class="btn btn-primary" ng-click="editUserProfile()">EDIT</button>
   </div>
 </div>
 
