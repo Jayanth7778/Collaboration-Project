@@ -51,11 +51,13 @@ public class UserDaoImpl implements UserDao
 	public User login(User user) 
 	{
 		Session session=sessionFactory.getCurrentSession();
-		
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
 		Query query=session.createQuery("from User where username=? and password=?");
 		query.setString(0,user.getUsername());
 		query.setString(1, user.getPassword());
 		User validUser=(User)query.uniqueResult();
+		System.out.println(validUser);
 		
 		return validUser;//either null or 1 user object
 	}
