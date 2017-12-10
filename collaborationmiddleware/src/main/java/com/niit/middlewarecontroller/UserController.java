@@ -57,7 +57,7 @@ public class UserController
 	public ResponseEntity<?> login(@RequestBody User user,HttpSession session)
 	{
 		User validUser=userDao.login(user);
-		
+		System.out.println(validUser);
 		if(validUser==null)
 		{
 			ErrorClazz errorClazz=new ErrorClazz(4,"Invalid username/password");
