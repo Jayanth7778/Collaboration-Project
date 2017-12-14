@@ -16,6 +16,14 @@ app.config(function($routeProvider){
 		templateUrl:'views/userprofile.html',
 		controller:'UserController'
 	})
+	.when('/addjob',{
+		templateUrl:'views/jobform.html',
+		controller:'JobController'
+	})
+	.when('/alljobs',{
+		templateUrl:'views/jobslist.html',
+		controller:'JobController'
+	})
 	.otherwise({templateUrl:'views/home.html'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){

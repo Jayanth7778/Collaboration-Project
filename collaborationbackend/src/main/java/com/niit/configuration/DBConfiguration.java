@@ -3,6 +3,7 @@ package com.niit.configuration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.model.Job;
 import com.niit.model.User;
 
 import java.util.Properties;
@@ -31,7 +32,7 @@ public class DBConfiguration
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
 		
-		Class classes[]=new Class[]{User.class};
+		Class classes[]=new Class[]{User.class,Job.class};
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	
