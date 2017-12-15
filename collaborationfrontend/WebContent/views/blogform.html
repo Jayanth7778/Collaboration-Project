@@ -1,0 +1,30 @@
+<form class="form-horizontal">
+<fieldset>
+
+<legend>Blog Form</legend>
+
+<!-- Input Fields -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="blogtitle">BlogTitle</label>  
+  <div class="col-md-4">
+  <input id="blogtitle" name="blogtitle" type="text" placeholder="Enter Blog Title" class="form-control input-md" required="" ng-model="blog.blogTitle"> 
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="blogcontent">BlogContent</label>  
+  <div class="col-md-4">
+  <textarea id="blogcontent" name="blogcontent" placeholder="Enter Blog Content" class="form-control input-md" required="" ng-model="blog.blogContent"></textarea> 
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary" ng-click="saveBlog()">Save Blog</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

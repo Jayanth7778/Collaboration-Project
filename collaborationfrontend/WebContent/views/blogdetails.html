@@ -1,0 +1,17 @@
+<h2>Approved BlogPost</h2>
+<div class="row">
+<div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<b>{{blogPost.blogTitle}}</b>
+			
+			<b>Created By:</b>{{blogPost.postedBy.firstname}}<br>
+			<b>Created On:</b>{{blogPost.postedOn |	date:'dd:MM:yyyy'}}<br>
+		</div>
+
+		<div class="panel-body">{{blogPost.blogContent}}
+		</div>
+	</div>
+</div>
+</div>
+<b>Likes</b>

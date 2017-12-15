@@ -1,0 +1,27 @@
+<h2>BlogPost Approval Form</h2>
+<div class="row">
+<div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<b>{{blogPost.blogTitle}}</b>
+			
+			<b>Created By:</b>{{blogPost.postedBy.firstname}}<br>
+			<b>Created On:</b>{{blogPost.postedOn |	date:'dd:MM:yyyy'}}<br>
+		</div>
+
+		<div class="panel-body">{{blogPost.blogContent}}
+		</div>
+	</div>
+</div>
+</div>
+
+<form>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<div class="text-center">
+				<button type="submit" class="btn btn-success">Approve</button>
+				<button type="submit" class="btn btn-danger">Deny</button>
+			</div>
+		</div>
+	</div>
+</form>

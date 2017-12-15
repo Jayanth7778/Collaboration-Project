@@ -24,6 +24,22 @@ app.config(function($routeProvider){
 		templateUrl:'views/jobslist.html',
 		controller:'JobController'
 	})
+	.when('/addblog',{
+		templateUrl:'views/blogform.html',
+		controller:'BlogPostController'
+	})
+	.when('/getblogs',{
+		templateUrl:'views/blogslist.html',
+		controller:'BlogPostController'
+	})
+	.when('/admin/getblog/:id',{
+		templateUrl:'views/approvalform.html',
+		controller:'BlogPostDetailsController'
+	})
+	.when('/getblog/:id',{
+		templateUrl:'views/blogdetails.html',
+		controller:'BlogPostDetailsController'
+	})
 	.otherwise({templateUrl:'views/home.html'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
