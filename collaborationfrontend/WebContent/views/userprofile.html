@@ -2,7 +2,7 @@
 <form class="form-horizontal">
 <fieldset>
 
-<legend>Registration Page</legend>
+<legend>Edit Profile</legend>
 
 <!-- Input Fields -->
 <div class="form-group">
@@ -56,10 +56,10 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectrole">Select Role</label>
   <div class="col-md-4">
-    <select id="selectrole" name="selectrole" class="form-control input-md">
-      <option value="STUDENT" ng-model="user.role">STUDENT</option>
-      <option value="ALUMNI" ng-model="user.role">ALUMNI</option>
-      <option value="EMPLOYEE" ng-model="user.role">EMPLOYEE</option>
+    <select id="selectrole" name="selectrole" class="form-control input-md" ng-model="user.role">
+      <option value="STUDENT">STUDENT</option>
+      <option value="ALUMNI">ALUMNI</option>
+      <option value="EMPLOYEE">EMPLOYEE</option>
     </select>
   </div>
 </div>

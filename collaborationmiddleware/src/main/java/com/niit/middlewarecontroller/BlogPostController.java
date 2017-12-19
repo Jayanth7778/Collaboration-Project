@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.dao.BlogPostDao;
 import com.niit.dao.UserDao;
@@ -95,6 +96,29 @@ public class BlogPostController
 		
 		BlogPost blogPost = blogPostDao.getBlogById(id);
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/updateapprovalstatus",method=RequestMethod.PUT)
+	public ResponseEntity<?> updateApprovalStatus(@RequestBody BlogPost blogPost,
+			@RequestParam(required=false) String rejectionReason,HttpSession session)
+	{
+		String username=(String)session.getAttribute("username");
+		if(username==null)
+		{
+			ErrorClazz error = new ErrorClazz(5,"Unauthorized Access");
+			return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+		}
+		try 
+		{
+			blogPostDao.updateBlogPost(blogPost,rejectionReason);
+		}
+		catch(Exception e)
+		{
+			ErrorClazz error = new ErrorClazz(7,"Unable to update blogpost apprval status");
+			return new ResponseEntity<ErrorClazz>(error,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<Void>(HttpStatus.OK);
+		
 	}
 }
 

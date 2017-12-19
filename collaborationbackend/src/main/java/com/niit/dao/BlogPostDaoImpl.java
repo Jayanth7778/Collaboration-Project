@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.model.BlogPost;
+import com.niit.model.Notification;
 
 @Repository
 @Transactional
@@ -39,6 +40,33 @@ public class BlogPostDaoImpl implements BlogPostDao
 		Session session = sessionFactory.getCurrentSession();
 		BlogPost blogPost = (BlogPost)session.get(BlogPost.class, id);
 		return blogPost;
+	}
+
+	public void updateBlogPost(BlogPost blogPost,String rejectionReason)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		
+		Notification notification=new Notification();
+		notification.setBlogTitle(blogPost.getBlogTitle());
+		notification.setUsername(blogPost.getPostedBy().getUsername());
+		
+		if(blogPost.isApproved())
+		{
+			session.update(blogPost);
+			notification.setApprovalStatus("Approved");
+			session.save(notification);
+		}
+		else
+		{
+			if(rejectionReason==null)
+				notification.setRejectionReason("Not Mentioned By Admin");
+			else
+				notification.setRejectionReason(rejectionReason);
+				notification.setApprovalStatus("Rejected");
+				
+				session.save(notification);
+				session.delete(blogPost);
+		}
 	}
 
 }

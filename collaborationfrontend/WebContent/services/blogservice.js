@@ -16,7 +16,7 @@ app.factory('BlogService',function($http)
 					return $http.get(BASE_URL + "/getblogs/"+1)
 				}
 				
-				blogService.getBlogsWaitingForApproved=function()
+				blogService.getBlogsWaitingForApproval=function()
 				{
 					return $http.get(BASE_URL + "/getblogs/"+0)
 				}
@@ -24,6 +24,11 @@ app.factory('BlogService',function($http)
 				blogService.getBlogPost=function(id)
 				{
 					return $http.get(BASE_URL + "/getblog/"+id)
+				}
+				
+				blogService.updateBlogPost=function(blogPost,rejectionReason)
+				{
+					return $http.put(BASE_URL + "/updateapprovalstatus?rejectionReason="+rejectionReason,blogPost)
 				}
 				
 			return blogService;

@@ -25,23 +25,19 @@ app.controller('BlogPostController',function($scope,BlogService,$location,$rootS
 						})
 			}
 			
-			BlogService.getBlogsApproved()
-			.then(function(response)
+			BlogService.getBlogsApproved().then(function(response)
 					{
 						$scope.blogsApproved=response.data
 					},
 					function(response)
 					{
 						if(response.status==401)
-						{
 							$location.path('/login')
-						}						
 					})
 					
 			if($rootScope.currentUser.role=='ADMIN')
 			{
-				BlogService.getBlogsWaitingForApproval()
-				.then(function(response)
+				BlogService.getBlogsWaitingForApproval().then(function(response)
 					{
 						$scope.blogsWaitingForApproval=response.data
 					},

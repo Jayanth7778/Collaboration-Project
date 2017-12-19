@@ -15,7 +15,7 @@
 			<tr ng-repeat="blogPost in blogsWaitingForApproval">
 				<td><a href="#/admin/getblog/{{blogPost.id}}">{{blogPost.blogTitle}}</a></td>
 				<td>{{blogPost.postedBy.firstname}}&nbsp;{{blogPost.postedBy.lastname}}</td>
-				<td>{{blogPost.postedOn | date : 'dd:MM:yyyy'}}</td>
+				<td>{{blogPost.postedOn | date : 'yyyy:MM:dd'}}</td>
 			</tr>
 		</tbody>
 	</table>

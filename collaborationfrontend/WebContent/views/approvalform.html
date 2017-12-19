@@ -3,7 +3,7 @@
 <div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<b>{{blogPost.blogTitle}}</b>
+			<b>Blog Title : {{blogPost.blogTitle}}</b><br>
 			
 			<b>Created By:</b>{{blogPost.postedBy.firstname}}<br>
 			<b>Created On:</b>{{blogPost.postedOn |	date:'dd:MM:yyyy'}}<br>
@@ -15,13 +15,16 @@
 </div>
 </div>
 
-<form>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<div class="text-center">
-				<button type="submit" class="btn btn-success">Approve</button>
-				<button type="submit" class="btn btn-danger">Deny</button>
-			</div>
-		</div>
-	</div>
-</form>
+  <form>
+    <div class="radio">
+      <label><input type="radio" ng-model="blogPost.approved" value="true" ng-click="showRejectionTxt(false)">Approve</label>
+      <label><input type="radio" ng-model="blogPost.approved" value="false" ng-click="showRejectionTxt(true)">Reject</label>
+    </div>
+    <div ng-show="isRejected">
+    Enter Rejection Reason
+    <input name="comment" placeholder="Rejection Reason" ng-model="rejectionReason">
+    </div>
+    <input type="submit" ng-click="updateBlogPost()">
+   </form>
+
+{{error.message}}

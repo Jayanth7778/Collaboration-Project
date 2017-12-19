@@ -20,11 +20,6 @@ public class UserController
 	@Autowired
 	private UserDao userDao;
 	
-	public UserController()
-	{
-		System.out.println("UserController is instantiated successfully");
-	}
-	
 	@RequestMapping(value="/registerUser",method=RequestMethod.POST)
 	public ResponseEntity<?> registerUser(@RequestBody User user)
 	{
