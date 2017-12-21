@@ -20,7 +20,6 @@ app.controller('BlogPostController',function($scope,BlogService,$location,$rootS
 							if(response.status==500)
 								{
 									$scope.error=response.data
-									
 								}
 						})
 			}

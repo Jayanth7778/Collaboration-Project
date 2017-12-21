@@ -28,7 +28,10 @@ app.factory('BlogService',function($http)
 				
 				blogService.updateBlogPost=function(blogPost,rejectionReason)
 				{
-					return $http.put(BASE_URL + "/updateapprovalstatus?rejectionReason="+rejectionReason,blogPost)
+					if(rejectionReason == undefined)
+						return $http.put(BASE_URL + "/updateapprovalstatus?rejectionReason="+'Not Mentioned',blogPost)
+						else
+							return $http.put(BASE_URL + "/updateapprovalstatus?rejectionReason="+rejectionReason,blogPost)
 				}
 				
 			return blogService;
