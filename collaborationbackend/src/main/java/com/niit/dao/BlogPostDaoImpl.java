@@ -58,7 +58,7 @@ public class BlogPostDaoImpl implements BlogPostDao
 		}
 		else
 		{
-			if(rejectionReason==null)
+			if(rejectionReason=="")
 				notification.setRejectionReason("Not Mentioned By Admin");
 			else
 				notification.setRejectionReason(rejectionReason);

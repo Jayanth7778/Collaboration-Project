@@ -18,6 +18,22 @@ app.controller('BlogPostDetailsController',function($scope,$location,$routeParam
 						}
 					})
 					
+			BlogService.userLikes(id).then(function(response)
+					{
+						if(response.data=='')
+							$scope.liked=false
+							else
+								$scope.liked=true
+								alert($scope.liked)
+					},
+					function(response)
+					{
+						if(response.status==401)
+						{
+							$location.path('/login')
+						}
+					})
+					
 			$scope.showRejectionTxt=function(val)
 			{
 				$scope.isRejected=val
@@ -32,7 +48,7 @@ app.controller('BlogPostDetailsController',function($scope,$location,$routeParam
 						},
 						function(response)
 						{
-							if(response.status=401)
+							if(response.status==401)
 								{
 									$location.path('/login')
 								}
@@ -43,4 +59,21 @@ app.controller('BlogPostDetailsController',function($scope,$location,$routeParam
 								}
 						})
 			}
+			
+			$scope.updateLikes=function()
+			{
+				BlogService.updateLikes($scope.blogPost).then(function(response)
+						{
+							$scope.blogPost=response.data;
+							$scope.liked=!$scope.liked;
+						},
+						function(response)
+						{
+							if(response.status==401)
+							{
+								$location.path('/login')
+							}
+						})
+			}
+			
 		})

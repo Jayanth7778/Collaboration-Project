@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.dao.BlogPostDao;
+import com.niit.dao.BlogPostLikesDao;
 import com.niit.dao.UserDao;
 import com.niit.model.BlogPost;
+import com.niit.model.BlogPostLikes;
 import com.niit.model.ErrorClazz;
 import com.niit.model.User;
 
@@ -28,6 +30,8 @@ public class BlogPostController
 	private BlogPostDao blogPostDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private BlogPostLikesDao blogPostLikesDao;
 	
 	@RequestMapping(value="/saveblog",method=RequestMethod.POST)
 	public ResponseEntity<?> saveBlogPost(@RequestBody BlogPost blogPost,HttpSession session)
@@ -118,6 +122,40 @@ public class BlogPostController
 			return new ResponseEntity<ErrorClazz>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(value="/userLikes/{id}",method=RequestMethod.GET)
+	public ResponseEntity<?> userLikes(@PathVariable int id,HttpSession session)
+	{
+		String username=(String)session.getAttribute("username");
+		if(username==null)
+		{
+			ErrorClazz error = new ErrorClazz(5,"Unauthorized Access");
+			return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+		}
+		
+		User user = userDao.getUserByUsername(username);
+		BlogPost blogPost = blogPostDao.getBlogById(id);
+		BlogPostLikes blogPostLikes = blogPostLikesDao.userLikes(blogPost, user);
+		
+		return new ResponseEntity<BlogPostLikes>(blogPostLikes,HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/updatelikes",method=RequestMethod.PUT)
+	public ResponseEntity<?> updateLikes(@RequestBody BlogPost blogPost,HttpSession session)
+	{
+		String username=(String)session.getAttribute("username");
+		if(username==null)
+		{
+			ErrorClazz error = new ErrorClazz(5,"Unauthorized Access");
+			return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED);
+		}
+		
+		User user = userDao.getUserByUsername(username);
+		BlogPost updatedBlogPost = blogPostLikesDao.updateLikes(blogPost, user);
+				
+		return new ResponseEntity<BlogPost>(updatedBlogPost,HttpStatus.OK);
 		
 	}
 }

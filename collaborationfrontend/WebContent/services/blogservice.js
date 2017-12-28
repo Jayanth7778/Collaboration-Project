@@ -34,5 +34,19 @@ app.factory('BlogService',function($http)
 							return $http.put(BASE_URL + "/updateapprovalstatus?rejectionReason="+rejectionReason,blogPost)
 				}
 				
+				blogService.userLikes=function(id)
+				{
+					return $http.get(BASE_URL + "/userLikes/"+id)
+				}
+				
+				blogService.updateLikes=function(blogPost)
+				{
+					return $http.put(BASE_URL + "/updatelikes",blogPost);
+				}
+				
 			return blogService;
 		})
+		
+		
+		
+		

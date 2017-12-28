@@ -16,5 +16,11 @@
 	</div>
 </div>
 </div>
-<b>Number Of Likes</b>{{blogPost.likes}}
+<b>Likes</b>{{blogPost.likes}}
+<div ng-show="liked">
+<span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes()"></span>
+</div>
+<div ng-show="!liked">
+<span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes()"></span>
+</div>
 Blog Comments
