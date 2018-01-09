@@ -40,7 +40,11 @@ app.config(function($routeProvider){
 		templateUrl:'views/blogdetails.html',
 		controller:'BlogPostDetailsController'
 	})
-	.otherwise({templateUrl:'views/home.html'})
+	.when('/home',{
+		templateUrl:'views/home.html',
+		controller:'HomeController'
+	})
+	.otherwise({templateUrl:'views/home.html',controller:'HomeController'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
 	alert($cookieStore.get('currentUser'))
