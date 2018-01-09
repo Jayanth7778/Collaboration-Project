@@ -26,10 +26,9 @@ public class UserDaoImpl implements UserDao
 	public boolean isEmailValid(String email)
 	{
 		Session session = sessionFactory.getCurrentSession();
-		
 		Query query = session.createQuery("from User where email='"+email+"'");
-		User user = (User)query.uniqueResult();
 		
+		User user = (User)query.uniqueResult();		
 		if(user==null)
 			return true;
 		else
@@ -41,7 +40,6 @@ public class UserDaoImpl implements UserDao
 		Session session = sessionFactory.getCurrentSession();
 		
 		User user = (User)session.get(User.class, username);
-		
 		if(user==null)
 			return true;
 		else
@@ -52,14 +50,14 @@ public class UserDaoImpl implements UserDao
 	{
 		Session session=sessionFactory.getCurrentSession();
 		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
-		Query query=session.createQuery("from User where username=? and password=?");
-		query.setString(0,user.getUsername());
-		query.setString(1, user.getPassword());
-		User validUser=(User)query.uniqueResult();
-		System.out.println(validUser);
+		System.out.println(user.getPassword());	
 		
-		return validUser;//either null or 1 user object
+		Query query = session.createQuery("from User where username=? and password=?");
+		query.setString(0, user.getUsername());
+		query.setString(1, user.getPassword());
+		
+		user=(User)query.uniqueResult();
+		return user;//either null or 1 user object
 	}
 	public void updateUser(User user)
 	{
@@ -69,10 +67,22 @@ public class UserDaoImpl implements UserDao
 	public User getUserByUsername(String username)
 	{
 		Session session=sessionFactory.getCurrentSession();
-		
 		User user=(User)session.get(User.class, username);
 		return user;
 	}
 
+	public boolean isUpdatedEmailValid(String email,String username)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User where email=? and username!=?");
+		query.setString(0, email);
+		query.setString(1, username);
+		User user = (User)query.uniqueResult();
+		if(user==null)
+			return true;
+		else
+			return false;
+		
+	}
 
 }

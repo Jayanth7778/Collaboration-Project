@@ -2,6 +2,7 @@ package com.niit.dao;
 
 import java.util.List;
 
+import com.niit.model.BlogComment;
 import com.niit.model.BlogPost;
 
 public interface BlogPostDao
@@ -10,4 +11,5 @@ public interface BlogPostDao
 	List<BlogPost> getBlogs(int approved);
 	BlogPost getBlogById(int id);
 	void updateBlogPost(BlogPost blogPost,String rejectionReason);
+	void addComment(BlogComment blogComment);
 }

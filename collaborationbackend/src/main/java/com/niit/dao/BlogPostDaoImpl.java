@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.niit.model.BlogComment;
 import com.niit.model.BlogPost;
 import com.niit.model.Notification;
 
@@ -67,6 +68,13 @@ public class BlogPostDaoImpl implements BlogPostDao
 				session.save(notification);
 				session.delete(blogPost);
 		}
+	}
+
+	public void addComment(BlogComment blogComment) 
+	{
+		Session session = sessionFactory.getCurrentSession();
+		session.save(blogComment);
+		
 	}
 
 }

@@ -74,6 +74,33 @@ app.controller('BlogPostDetailsController',function($scope,$location,$routeParam
 								$location.path('/login')
 							}
 						})
+						
 			}
+						
+						$scope.addComment=function()
+						{
+							BlogService.addComment($scope.commentText,id).then(function(response)
+									{
+										alert(response.status)
+									},
+									function(response)
+									{
+										if(response.status==401)
+											{
+												$location.path('/login')
+											}
+											if(response.status==500)
+											{
+												$scope.error=response.data
+											}
+									})
+						}
+						
+						$scope.showComments=function()
+						{
+							alert('show comments')
+							$scope.showComment=!$scope.showComment
+						}
+			
 			
 		})
