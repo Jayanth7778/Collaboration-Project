@@ -190,7 +190,8 @@ public class BlogPostController
 			return new ResponseEntity<ErrorClazz>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		return new ResponseEntity<BlogComment>(blogComment,HttpStatus.OK);
+		blogPost = blogPostDao.getBlogById(id);
+		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}
 }
 

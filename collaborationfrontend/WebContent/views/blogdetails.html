@@ -34,8 +34,9 @@ Blog Comments
 		<ul ng-show="showComment" style="list-style:none">
 			<li
 				ng-repeat="comment in blogPost.blogComments | orderBy:'-commentedOn'">
-				{{comment.commentText}}<br> <strong>Commented By </strong>
-				{{comment.commentedBy.username}} &nbsp; <strong>Commented On</strong> {{comment.commentedOn | date : 'medium'}}
+				{{comment.commentText}}<br> 
+				<strong>Commented By </strong> {{comment.commentedBy.username}} &nbsp; 
+				<strong>Commented On</strong> {{comment.commentedOn | date : 'medium'}}
 			</li>
 		</ul>
 	</div>

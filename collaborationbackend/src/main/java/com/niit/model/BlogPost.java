@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class BlogPost
 	private User postedBy;
 	private boolean approved;
 	private int likes;
-	@OneToMany(mappedBy="blogPost")
+	@OneToMany(mappedBy="blogPost",fetch=FetchType.EAGER)
 	private List<BlogComment> blogComments;
 	
 	public int getId() {
