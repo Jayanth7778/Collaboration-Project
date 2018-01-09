@@ -66,6 +66,15 @@ text-shadow:   none ;
                 						 </ul>
                 			</li>
                 			
+                			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username">
+                			<span class="glyphicon glyphicon-globe" ng-click="updateLength()">
+                			<span class="rw-number-notification" ng-if="notificationNotViewedLength>0">{{notificationNotViewedLength}}</span></span></a>
+                				<ul class="dropdown-menu">
+                					<li ng-repeat="notification in notificationNotViewed"><a href="" ng-click="updateNotification(notification.id)" style="color:red"><b>{{notification.blogTitle}}</b> is {{notification.approvalStatus}} {{notification.rejectionReason}}</a></li>
+                					<li ng-repeat="notification in notificationViewed"><a href="" ng-click="" style="color:blue">{{notification.blogTitle}} is {{notification.approvalStatus}} {{notification.rejectionReason}}</a></li>
+                				</ul>
+                			</li>
+                			
                 	<li><a href="" ng-show="currentUser.username" ng-click="logout()">logout</a></li>
 					<li><a href="#/register" ng-hide="currentUser.username">Sign Up</a></li>
 					<li><a href="#/login" ng-hide="currentUser.username">Sign In</a></li>
@@ -89,6 +98,8 @@ text-shadow:   none ;
 	<script type="text/javascript" src="controllers/blogcontroller.js"></script>
 	<script type="text/javascript" src="services/blogservice.js"></script>
 	<script type="text/javascript" src="controllers/blogpostdetailscontroller.js"></script>
+	<script type="text/javascript" src="services/homeservice.js"></script>
+	<script type="text/javascript" src="controllers/homecontroller.js"></script>
 	
 	<br>
 	<br>
