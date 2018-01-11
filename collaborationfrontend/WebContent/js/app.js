@@ -47,6 +47,22 @@ app.config(function($routeProvider){
 	.when('/uploadpic',{
 		templateUrl:'views/profilepicture.html'
 	})
+	.when('/suggesteduserslist',{
+		templateUrl:'views/listofsuggestedusers.html',
+		controller:'FriendController'
+	})
+	.when('/pendingrequests',{
+		templateUrl:'views/listofpendingrequests.html',
+		controller:'FriendController'
+	})
+	.when('/getUserDetails/:fromId',{
+		templateUrl:'views/userdetails.html',
+		controller:'FriendDetailController'
+	})
+	.when('/listoffriends',{
+		templateUrl:'views/listoffriends.html',
+		controller:'FriendController'
+	})
 	.otherwise({templateUrl:'views/home.html',controller:'HomeController'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){

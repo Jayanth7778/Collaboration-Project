@@ -78,6 +78,26 @@ text-shadow:   none ;
                 			<li><a href="#/uploadpic" ng-show="currentUser.username">
                 			<img src="http://localhost:8090/collaborationmiddleware/getimage/{{currentUser.username}}" alt="Upload profile pic" height="40" width="40"></a></li>
                 			
+                			<li class="dropdown" title="new job notification">
+                				<a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username">
+                				<span class="glyphicon glyphicon-bell">
+                				<span class="rw-number-notification" ng-if="jobnotifications.length>0">{{jobnotifications.length}}</span></span></a>
+                					<ul class="dropdown-menu">
+                						<li ng-repeat="job in notifications">
+                						<a href="#/jobdetail/{{jobid}}" style="color:red">
+                						<b>new job notification for "{{job.jobTitle}}"</b> </a></li>                				
+                					</ul>
+                			</li>
+                			
+                			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username">Friend<b class="caret"></b></a>
+                 				<ul class="dropdown-menu">
+                 					<li><a href="#/suggesteduserslist">Suggested users</a></li>
+                 					<li><a href="#/pendingrequests">Pending requests</a></li>
+                 					<li><a href="#/listoffriends">List of Friends</a></li>
+                				</ul>
+                			</li>
+                			
+                			
                 	<li><a href="" ng-show="currentUser.username" ng-click="logout()">logout</a></li>
 					<li><a href="#/register" ng-hide="currentUser.username">Sign Up</a></li>
 					<li><a href="#/login" ng-hide="currentUser.username">Sign In</a></li>
@@ -87,23 +107,39 @@ text-shadow:   none ;
 			</nav>
 </header>
 <div ng-view>
-
 </div>
+
 </body>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+	
 	<script type="text/javascript" src="js/app.js"></script>
+	
+	<script type="text/javascript" src="js/fileinput.js"></script>
+	<script type="text/javascript" src="js/fileinput.min.js"></script>
+	<script type="text/javascript" src="js/sockjs.js"></script>
+	<script type="text/javascript" src="js/sockjs.min.js"></script>
+	<script type="text/javascript" src="js/stomp.js"></script>
+	<script type="text/javascript" src="js/stomp.min.js"></script>
+	
 	<script type="text/javascript" src="controllers/usercontroller.js"></script>
 	<script type="text/javascript" src="services/userservice.js"></script>
+	
 	<script type="text/javascript" src="controllers/jobcontroller.js"></script>
 	<script type="text/javascript" src="services/jobservice.js"></script>
+	
 	<script type="text/javascript" src="controllers/blogcontroller.js"></script>
 	<script type="text/javascript" src="services/blogservice.js"></script>
 	<script type="text/javascript" src="controllers/blogpostdetailscontroller.js"></script>
+	
 	<script type="text/javascript" src="services/homeservice.js"></script>
 	<script type="text/javascript" src="controllers/homecontroller.js"></script>
 	
+	<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+	<script type="text/javascript" src="controllers/frienddetailcontroller.js"></script>
+	<script type="text/javascript" src="services/friendservice.js"></script>
+	<br>
 	<br>
 	<br>
 	<br>
@@ -115,6 +151,7 @@ text-shadow:   none ;
 			<div class="navbar-text pull-left">
 				<p>&copy; 2017 Jayanth</p>
 			</div>
+			
 			<div class="navbar-text noStyle pull-right">
 				<a href="https://www.facebook.com/" target="_blank">
 					<i class="fa fa-facebook fa-2x"></i>
@@ -134,7 +171,7 @@ text-shadow:   none ;
 			</div>
 
 		</div>
-</div>
+	</div>
 	
 </html>
 

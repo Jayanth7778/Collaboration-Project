@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.model.BlogComment;
 import com.niit.model.BlogPost;
 import com.niit.model.BlogPostLikes;
+import com.niit.model.Friend;
 import com.niit.model.Job;
 import com.niit.model.Notification;
 import com.niit.model.ProfilePicture;
@@ -37,7 +38,7 @@ public class DBConfiguration
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
 		
-		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,Notification.class,BlogPostLikes.class,BlogComment.class,ProfilePicture.class};
+		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,Notification.class,BlogPostLikes.class,BlogComment.class,ProfilePicture.class,Friend.class};
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	
