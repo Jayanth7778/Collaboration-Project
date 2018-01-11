@@ -35,7 +35,7 @@ app.controller('HomeController',function($rootScope,$location,HomeService)
 				$rootScope.notificationNotViewedLength=0
 			}
 			
-			$rootScope.updateNotification=functionn(id)
+			$rootScope.updateNotification=function(id)
 			{
 				HomeService.updateNotification(notificationId).then(function(response)
 						{

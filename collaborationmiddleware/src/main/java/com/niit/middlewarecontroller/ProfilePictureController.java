@@ -43,7 +43,6 @@ public class ProfilePictureController
         profilePictureDao.saveOrUpdateProfilePicture(profilePicture);
         return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
         
-		
 	}
 	
 	@RequestMapping(value="/getimage/{username}",method=RequestMethod.GET)

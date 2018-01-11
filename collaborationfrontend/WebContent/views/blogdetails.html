@@ -4,10 +4,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<b>{{blogPost.blogTitle}}</b> <b>Created By:</b>{{blogPost.postedBy.firstname}}<br>
+				<img src="http://localhost:8090/collaborationmiddleware/getimage/{{blogPost.postedBy.username}}" alt="Image Not Available" height="40" width="40">
 				<b>Created On:</b>{{blogPost.postedOn | date :'yyyy:MM:dd'}}
 			</div>
 			<div class="panel-body">{{blogPost.blogContent}}</div>
-
+			
 			<a></a> <br>
 		</div>
 	</div>

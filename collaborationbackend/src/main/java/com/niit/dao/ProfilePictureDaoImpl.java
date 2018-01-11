@@ -12,11 +12,9 @@ import com.niit.model.ProfilePicture;
 @Transactional
 public class ProfilePictureDaoImpl implements ProfilePictureDao
 { 
-	
 	@Autowired
     private SessionFactory sessionFactory;
 	
-
 	public ProfilePicture getProfilePicture(String username)
 	{
 		Session session=sessionFactory.getCurrentSession();

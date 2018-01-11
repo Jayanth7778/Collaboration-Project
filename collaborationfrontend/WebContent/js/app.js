@@ -44,6 +44,9 @@ app.config(function($routeProvider){
 		templateUrl:'views/home.html',
 		controller:'HomeController'
 	})
+	.when('/uploadpic',{
+		templateUrl:'views/profilepicture.html'
+	})
 	.otherwise({templateUrl:'views/home.html',controller:'HomeController'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){

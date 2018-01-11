@@ -75,6 +75,9 @@ text-shadow:   none ;
                 				</ul>
                 			</li>
                 			
+                			<li><a href="#/uploadpic" ng-show="currentUser.username">
+                			<img src="http://localhost:8090/collaborationmiddleware/getimage/{{currentUser.username}}" alt="Upload profile pic" height="40" width="40"></a></li>
+                			
                 	<li><a href="" ng-show="currentUser.username" ng-click="logout()">logout</a></li>
 					<li><a href="#/register" ng-hide="currentUser.username">Sign Up</a></li>
 					<li><a href="#/login" ng-hide="currentUser.username">Sign In</a></li>
