@@ -1,0 +1,33 @@
+<style type="text/css">
+body
+{
+    background-image: url("images/friend.jpg");
+    background-repeat: no-repeat;
+	opacity:0.8;
+    background-size: 100%; 
+    padding-bottom: 75px;
+	background-attachment: fixed;
+}
+</style>
+
+<table>
+
+	<thead>
+	<p>Your Friends</p>
+		<tr>
+			<th>Username</th>
+	<th></th>
+			<th>Image</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="friend in friends">
+		<td ng-hide="friend.fromId==currentUser.username">{{friend.fromId}}</td>
+		<td ng-hide="friend.toId==currentUser.username">{{friend.toId}}</td>
+		<td><img src="http://localhost:8090/collaborationmiddleware/getimage/{{friend.fromId}}" height="50px" width="50px" ng-hide="friend.fromId==currentUser.username"></td>
+		<td><img src="http://localhost:8090/collaborationmiddleware/getimage/{{friend.toId}}" height="50px" width="50px" ng-hide="friend.toId==currentUser.username"></td>
+		</tr>
+	</tbody>
+	
+</table>

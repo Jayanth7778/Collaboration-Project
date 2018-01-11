@@ -41,8 +41,8 @@ public class ProfilePictureController
         profilePicture.setImage(image.getBytes());
         
         profilePictureDao.saveOrUpdateProfilePicture(profilePicture);
-        return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
         
+        return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/getimage/{username}",method=RequestMethod.GET)

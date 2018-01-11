@@ -16,7 +16,7 @@ app.factory('HomeService',function($http)
 				return $http.get(BASE_URL + "/getnotification/"+1)
 			}
 			
-			homeService.updateNotification=function(id)
+			homeService.updateNotification=function(notificationId)
 			{
 				return $http.put(BASE_URL + "/updatenotification/"+notificationId)
 			}

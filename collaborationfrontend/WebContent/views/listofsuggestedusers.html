@@ -1,0 +1,34 @@
+<style type="text/css">
+body
+{
+    background-image: url("images/friend.jpg");
+    background-repeat: no-repeat;
+	opacity:0.8;
+    background-size: 100%; 
+    padding-bottom: 75px;
+	background-attachment: fixed;
+}
+</style>
+
+<table class="table">
+<thead>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name </th>
+		<th>Online</th>
+		<th>Role</th>
+		<th>Request</th>
+	</tr>
+</thead>
+
+<tbody>
+	<tr ng-repeat="user in suggestedusers">
+		<td>{{user.firstname}}</td><td>{{user.lastname}}</td>
+		<td ng-if="user.online">Yes</td>
+		<td ng-if="!user.online">No</td>
+		<td>{{user.role}}</td>
+		<td><a  ng-click="friendRequest(user.username)" class="btn btn-default">Send Friend Request</a></td>
+	</tr>
+</tbody>
+
+</table>

@@ -27,15 +27,17 @@ app.controller('HomeController',function($rootScope,$location,HomeService)
 						})
 			}
 			
-			getNotification()
-			
+			if($rootScope.currentUser!=undefined)
+				{
+					getNotification()
+				}
 			
 			$rootScope.updateLength=function()
 			{
 				$rootScope.notificationNotViewedLength=0
 			}
 			
-			$rootScope.updateNotification=function(id)
+			$rootScope.updateNotification=function(notificationId)
 			{
 				HomeService.updateNotification(notificationId).then(function(response)
 						{
