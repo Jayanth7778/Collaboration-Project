@@ -12,7 +12,7 @@ app.controller('FriendController',function($scope,$location,FriendService)
 				
 				function(response)
 				{
-					if(response.status==404)
+					if(response.status==401)
 						$location.path('/login')
 						console.log(response.status)	
 				})

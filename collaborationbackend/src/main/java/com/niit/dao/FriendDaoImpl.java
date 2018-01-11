@@ -20,19 +20,14 @@ public class FriendDaoImpl implements FriendDao
 	@Autowired
 	public SessionFactory sessionFactory;
 
-	@SuppressWarnings("unchecked")
 	public List<User> getListOfSuggestedUsers(String username) 
 	{
 		Session session=sessionFactory.getCurrentSession();
 		
-		String queryString="select * from user_table where username in"
-				+ "(select username from user where username!=?" 
-				+ "minus" 
-				+ "(select fromId from friend where toId=? and status!='D'" 
-				+ "union select toId from friend where fromId=? and status!='D'))";
+		String queryString="select * from user_table where username in (select username from user_table where username!=? minus (select fromId from friend where toId=? and status!='D' union select toId from friend where fromId=? and status!='D'))";
 		SQLQuery query =session.createSQLQuery(queryString);
 		
-		query.setString(0,username);
+		query.setString(0, username);
 		query.setString(1, username);
 		query.setString(2, username);
 		query.addEntity(User.class);

@@ -15,6 +15,7 @@ body
 	<tr>
 		<th>First Name</th>
 		<th>Last Name </th>
+		<th>Profile Pic</th>
 		<th>Online</th>
 		<th>Role</th>
 		<th>Request</th>
@@ -23,11 +24,13 @@ body
 
 <tbody>
 	<tr ng-repeat="user in suggestedusers">
-		<td>{{user.firstname}}</td><td>{{user.lastname}}</td>
+		<td>{{user.firstname}}</td>
+		<td>{{user.lastname}}</td>
+		<td><img src="http://localhost:8090/collaborationmiddleware/getimage/{{user.username}}"></td>
 		<td ng-if="user.online">Yes</td>
 		<td ng-if="!user.online">No</td>
 		<td>{{user.role}}</td>
-		<td><a  ng-click="friendRequest(user.username)" class="btn btn-default">Send Friend Request</a></td>
+		<td><a ng-click="friendRequest(user.username)" class="btn btn-primary">Send Friend Request</a></td>
 	</tr>
 </tbody>
 
