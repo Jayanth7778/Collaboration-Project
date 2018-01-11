@@ -1,11 +1,15 @@
 package com.niit.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,8 @@ public class Job
 	private String salary;
 	private String yrsOfExp;
 	private Date postedOn;
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<User> notifiedUsers;
 	
 	public int getId() {
 		return id;
@@ -78,6 +84,12 @@ public class Job
 	}
 	public void setPostedOn(Date postedOn) {
 		this.postedOn = postedOn;
+	}
+	public List<User> getNotifiedUsers() {
+		return notifiedUsers;
+	}
+	public void setNotifiedUsers(List<User> notifiedUsers) {
+		this.notifiedUsers = notifiedUsers;
 	}
 	
 }
