@@ -54,6 +54,7 @@ public class DBConfiguration
 	    
 	    return dataSource;
 	}
+	
 	@Bean
 	public HibernateTransactionManager hibTransManagement()
 	{

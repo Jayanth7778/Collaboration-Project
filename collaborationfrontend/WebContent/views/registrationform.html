@@ -1,4 +1,15 @@
-<div class="container" style="background-image: url('registration.jpg');">
+<style>
+body
+{
+    background-image: url("resources/images/registration.jpg");
+    background-repeat: no-repeat;
+	opacity:0.8;
+    background-size: 100%; 
+    padding-bottom: 75px;
+	background-attachment: fixed;
+}
+</style>
+
 <span style="color:red" ng-if="error.code==1">{{error.message}}</span>
 <form class="form-horizontal">
 <fieldset>

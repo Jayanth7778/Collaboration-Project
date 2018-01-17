@@ -41,8 +41,7 @@ app.controller('BlogPostDetailsController',function($scope,$location,$routeParam
 					
 			$scope.updateBlogPost=function()
 			{
-				BlogService.updateBlogPost($scope.blogPost,$scope.rejectionReason)
-				.then(function(response)
+				BlogService.updateBlogPost($scope.blogPost,$scope.rejectionReason).then(function(response)
 						{
 							$location.path('/getblogs')
 						},

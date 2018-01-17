@@ -97,6 +97,9 @@ text-shadow:   none ;
                 				</ul>
                 			</li>
                 			
+                			<li><a href="#/chat" ng-show="currentUser.firstname">Chat</a></li>
+                 			<li><a href="#/register" ng-hide="currentUser.firstname">Sign Up</a></li>
+                 			<li><a href="#/login" ng-hide="currentUser.firstname">Login</a></li>
                 			
                 	<li><a href="" ng-show="currentUser.username" ng-click="logout()">logout</a></li>
 					<li><a href="#/register" ng-hide="currentUser.username">Sign Up</a></li>
@@ -114,8 +117,7 @@ text-shadow:   none ;
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
 	
-	<script type="text/javascript" src="js/app.js"></script>
-	
+	<script type="text/javascript" src="js/app.js"></script>	
 	<script type="text/javascript" src="js/fileinput.js"></script>
 	<script type="text/javascript" src="js/fileinput.min.js"></script>
 	<script type="text/javascript" src="js/sockjs.js"></script>
@@ -130,15 +132,19 @@ text-shadow:   none ;
 	<script type="text/javascript" src="services/jobservice.js"></script>
 	
 	<script type="text/javascript" src="controllers/blogcontroller.js"></script>
-	<script type="text/javascript" src="services/blogservice.js"></script>
 	<script type="text/javascript" src="controllers/blogpostdetailscontroller.js"></script>
+	<script type="text/javascript" src="services/blogservice.js"></script>
 	
-	<script type="text/javascript" src="services/homeservice.js"></script>
 	<script type="text/javascript" src="controllers/homecontroller.js"></script>
+	<script type="text/javascript" src="services/homeservice.js"></script>
 	
 	<script type="text/javascript" src="controllers/friendcontroller.js"></script>
 	<script type="text/javascript" src="controllers/frienddetailcontroller.js"></script>
 	<script type="text/javascript" src="services/friendservice.js"></script>
+	
+	<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+	<script type="text/javascript" src="services/chatservice.js"></script>
+	
 	<br>
 	<br>
 	<br>

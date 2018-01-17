@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -14,11 +15,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 //<context:component-scan base-package="com.niit"></context:component-scan>
 public class WebConfig extends WebMvcConfigurerAdapter
 {
-	@Bean(name="multipartResolver")
-	public CommonsMultipartResolver getCommonsMultipartResolver()
-	{
-		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		return multipartResolver;
-	}
+		public void addResourceHandlers(ResourceHandlerRegistry registry)
+		{
+			registry.addResourceHandler("/resources/**")
+			.addResourceLocations("/WEB-INF/resources/");
+	
+			//<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
+		}
+		
+		@Bean(name="multipartResolver")
+		public CommonsMultipartResolver getCommonsMultipartResolver()
+		{
+			CommonsMultipartResolver commonsMultipartResolver=new CommonsMultipartResolver();
+	
+			commonsMultipartResolver.setMaxUploadSize(10485760);
+	
+			return commonsMultipartResolver;
+	
+		}
+
 	
 }

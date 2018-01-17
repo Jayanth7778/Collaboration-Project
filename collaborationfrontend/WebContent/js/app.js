@@ -63,6 +63,10 @@ app.config(function($routeProvider){
 		templateUrl:'views/listoffriends.html',
 		controller:'FriendController'
 	})
+	.when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatCtrl'
+	})
 	.otherwise({templateUrl:'views/home.html',controller:'HomeController'})
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){

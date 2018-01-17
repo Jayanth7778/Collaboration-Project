@@ -20,6 +20,7 @@ public class FriendDaoImpl implements FriendDao
 	@Autowired
 	public SessionFactory sessionFactory;
 
+	@SuppressWarnings("unchecked")
 	public List<User> getListOfSuggestedUsers(String username) 
 	{
 		Session session=sessionFactory.getCurrentSession();
