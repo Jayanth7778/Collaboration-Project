@@ -78,6 +78,11 @@ app.controller('BlogPostDetailsController',function($scope,$location,$routeParam
 						
 						$scope.addComment=function()
 						{
+							if($scope.commentText==undefined)
+								{
+									alert('Please enter comment')
+								}
+							else
 							BlogService.addComment($scope.commentText,id).then(function(response)
 									{
 										alert(response.status)
