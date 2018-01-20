@@ -97,9 +97,7 @@ text-shadow:   none ;
                 				</ul>
                 			</li>
                 			
-                			<li><a href="#/chat" ng-show="currentUser.firstname">Chat</a></li>
-                 			<li><a href="#/register" ng-hide="currentUser.firstname">Sign Up</a></li>
-                 			<li><a href="#/login" ng-hide="currentUser.firstname">Login</a></li>
+                			<li><a href="#/chat" ng-show="currentUser.username">Chat</a></li>
                 			
                 	<li><a href="" ng-show="currentUser.username" ng-click="logout()">logout</a></li>
 					<li><a href="#/register" ng-hide="currentUser.username">Sign Up</a></li>
@@ -120,10 +118,9 @@ text-shadow:   none ;
 	<script type="text/javascript" src="js/app.js"></script>	
 	<script type="text/javascript" src="js/fileinput.js"></script>
 	<script type="text/javascript" src="js/fileinput.min.js"></script>
-	<script type="text/javascript" src="js/sockjs.js"></script>
-	<script type="text/javascript" src="js/sockjs.min.js"></script>
-	<script type="text/javascript" src="js/stomp.js"></script>
-	<script type="text/javascript" src="js/stomp.min.js"></script>
+	<script type="text/javascript" src="js/sockjs/sockjs.js"></script>
+	<script type="text/javascript" src="js/stomp/dist/stomp.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
 	
 	<script type="text/javascript" src="controllers/usercontroller.js"></script>
 	<script type="text/javascript" src="services/userservice.js"></script>

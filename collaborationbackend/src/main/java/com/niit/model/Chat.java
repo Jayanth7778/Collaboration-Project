@@ -1,12 +1,7 @@
 package com.niit.model;
 
-/**
- * @author DELL
- *
- */
-public class Chat
+public class Chat 
 {
-	
 	private String message;
 	private String to;
 	private String from;
@@ -17,22 +12,29 @@ public class Chat
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	public String getTo() {
 		return to;
 	}
+	
 	public void setTo(String to) {
 		this.to = to;
 	}
+	
 	public String getFrom() {
 		return from;
 	}
+	
 	public void setFrom(String from) {
 		this.from = from;
 	}
-	
+
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Chat [message=" + message + ", to=" + to + "]";
 	}
+	
+	
 	
 }

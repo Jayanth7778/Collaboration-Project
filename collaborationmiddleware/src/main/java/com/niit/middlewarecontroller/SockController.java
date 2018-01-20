@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
 import com.niit.model.Chat;
 
 @Controller
-public class SockController 
+public class SockController
 {
 	@SuppressWarnings("unused")
 	private static final Log logger = LogFactory.getLog(SockController.class);
@@ -30,18 +30,18 @@ public class SockController
 	}
 
 	@SubscribeMapping("/join/{username}")
-	public List<String> join(@DestinationVariable("username") String username)
+	public List<String> join(@DestinationVariable("username") String username) 
 	{
 		 System.out.println("username in sockcontroller" + username);
+		 
 		 if(!users.contains(username))
 		 {
-			users.add(username);
+				users.add(username);
 		 }
 
 		System.out.println("====JOIN==== " + username);
-		// notify all subscribers of new user
-		messagingTemplate.convertAndSend("/topic/join", username);
 
+		messagingTemplate.convertAndSend("/topic/join", username);
 		return users;
 
 	}
@@ -49,15 +49,12 @@ public class SockController
 	@MessageMapping(value = "/chat")
 	public void chatReveived(Chat chat)
 	{
-		System.out.println("From value in chatreceived in chat object " + chat.getFrom());
-		System.out.println(chat.getFrom());
-
 		if ("all".equals(chat.getTo()))
 		{
 			System.out.println("IN CHAT REVEIVED " + chat.getMessage() + " " + chat.getFrom() + " to " + chat.getTo());
 			messagingTemplate.convertAndSend("/queue/chats", chat);
 		}
-		else 
+		else
 		{
 			System.out.println("CHAT TO " + chat.getTo() + " From " + chat.getFrom() + " Message " + chat.getMessage());
 

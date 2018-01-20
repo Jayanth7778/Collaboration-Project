@@ -1,38 +1,38 @@
 /**
  * ChatService
  */
-app.filter('reverse', function()
+app.filter('reverse', function() 
 		{
-	  		return function(items) 
+	  		return function(items)
 	  		{
 	  			return items.slice().reverse();
 	  		};
 		});
 
-		app.directive('ngFocus', function() 
+	app.directive('ngFocus', function() 
+			{
+				return function(scope, element, attrs) 
 				{
-					return function(scope, element, attrs) 
-					{
-						element.bind('click', function()
-								{
-									$('.' + attrs.ngFocus)[0].focus();
-								});
-					};
-				});
-
-		app.factory('socket', function($rootScope) 
-				{
-					alert('app factory')
-					var socket = new SockJS('/collaborationbackend/portfolio');
-					var stompClient = Stomp.over(socket);
-	    
-					stompClient.connect('', '', function(frame)
+					element.bind('click', function() 
 							{
-								$rootScope.$broadcast('sockConnected', frame);
+								$('.' + attrs.ngFocus)[0].focus();
 							});
+				};
+			});
 
-					return 
-					{
-						stompClient: stompClient
-					};
-				});
+	app.factory('socket', function($rootScope) 
+			{
+				alert('app factory')
+				var socket = new SockJS('/collaborationmiddleware/chatmodule');
+				var stompClient = Stomp.over(socket);
+				
+				stompClient.connect('', '', function(frame)
+						{
+							$rootScope.$broadcast('sockConnected', frame);
+						});
+
+						return
+						{
+							stompClient: stompClient
+						};
+			});
